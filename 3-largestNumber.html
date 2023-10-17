@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Largest number</title>
+</head>
+
+<body>
+    <!-- Given an array of numbers, arrange them in a way that it forms the largest value.
+    Input
+    [54, 546, 548, 60]
+    Output
+    6054854654
+    Note
+    The arrangement 6054854654 gives the largest value.
+    Constraints
+    1<=N<=1000 1<=Number<=1000000  -->
+
+    <h1>Program to print the largest value from an array of numbers</h1>
+
+    <hr />
+    <p>Constraints</p>
+    <ul>
+        <li>1<=N<=1000</li>
+        <li>1<=Number<=1000000</li>
+    </ul>
+
+    <p>Click the button to enter array of numbers</p>
+    <button type="submit" id="btn">Enter Array Number</button>
+
+    <hr />
+    <p id="result"></p>
+
+
+    <script>
+        let btn = document.querySelector("#btn")
+        let result = document.querySelector("#result")
+
+        function largestNumber(array) {
+            let resultNum = ""
+            array.sort(function (a, b) {
+                let ab = a + b;
+                let ba = b + a;
+                return (ba - ab)
+            });
+            for (let i = 0; i < array.length; i++) {
+                resultNum = resultNum + array[i]
+            }
+            result.textContent = `The largest number formed from an array is ${resultNum}`
+        }
+
+
+
+        btn.addEventListener("click", function (e) {
+            e.preventDefault()
+            let array = []
+            let arrLength = +prompt("enter length of an array", 1)
+
+            if (!isNaN(arrLength)) {
+                for (let i = 0; i < arrLength; i++) {
+                    let x = prompt(`Enter ${i} element`, 1)
+                    if (!isNaN(Number(x)) && Number(x) > 0 && Number(x) < 1001) {
+                        array.push(x)
+                    } else {
+                        alert("Enter only legal numbers, Kindly start entering from first number")
+                        array = []
+                        break;
+                    }
+                }
+            } else {
+                alert("Enter only legal numbers")
+            }
+
+            if (array.length) {
+                largestNumber(array)
+            }
+        })
+    </script>
+</body>
+
+</html>

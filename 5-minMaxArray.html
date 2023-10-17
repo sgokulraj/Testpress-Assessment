@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Min Max Array</title>
+</head>
+
+<body>
+    <!-- Given an array of numbers, find the maximum and minimum element in the array.
+    Input
+    [54, 546, 548, 60]
+    Output
+    548 54 -->
+
+
+    <h1>Program to find the minimum and maximum element in the array</h1>
+    <p>Click the button to enter array of numbers</p>
+    <button type="submit" id="btn">Enter Array Number</button>
+
+    <hr />
+    <p id="inputArr"></p>
+    <p id="min"></p>
+    <p id="max"></p>
+
+
+
+    <script>
+        let btn = document.querySelector("#btn")
+        let min = document.querySelector("#min")
+        let max = document.querySelector("#max")
+        let inputArr = document.querySelector("#inputArr")
+
+
+        btn.addEventListener("click", function (e) {
+            e.preventDefault()
+            let array = []
+            let arrLength = +prompt("enter length of an array", 1)
+
+            if (!isNaN(arrLength)) {
+                for (let i = 0; i < arrLength; i++) {
+                    let x = prompt(`Enter ${i} element`, 1)
+                    if (!isNaN(Number(x))) {
+                        array.push(x)
+                    } else {
+                        alert("Enter only legal numbers, Kindly start entering from first number")
+                        array = []
+                        break;
+                    }
+                }
+            } else {
+                alert("Enter only legal numbers")
+            }
+
+            if (array.length) {
+                let minimum = Math.min(...array);
+                let maximum = Math.max(...array);
+
+                inputArr.textContent = `Array of numbers = ${array}`
+                min.textContent = `Minimum Number = ${minimum}`
+                max.textContent = `Maximum Number = ${maximum}`
+            }
+        })
+    </script>
+</body>
+
+</html>

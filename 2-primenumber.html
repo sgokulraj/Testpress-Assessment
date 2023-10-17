@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prime number</title>
+</head>
+
+<body>
+    <!-- Given a number, check whether it is a prime number or not. -->
+
+    <h1>Program to check whether a number is a prime number or not</h1>
+
+
+    <form>
+        <input type="number" name="num" id="num" placeholder="Enter a number" required>
+        <button type="submit" id="btn">Check</button>
+    </form>
+    <p id="result"></p>
+   
+
+    <script>
+        let number = document.querySelector("#num")
+        let checkBtn = document.querySelector("#btn")
+        let result = document.querySelector("#result")
+
+
+        checkBtn.addEventListener("click", function (e) {
+            e.preventDefault();
+
+            let numValue = document.querySelector("#num").value
+
+            let bool = true;
+            for (let i = 2; i <= numValue / 2; ++i) {
+                if ((numValue % i == 0)) {
+                    bool = false
+                }
+            }
+            if (bool) {
+                result.textContent = `${numValue} is prime number`
+            }
+            else {
+                result.textContent = `${numValue} is composite number`
+            }
+        })
+
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reverse Number</title>
+</head>
+
+<body>
+    <!-- Given a number N, print reverse of number N.
+    Input
+    988
+    Output
+    889
+    Note
+    Do not print leading zeros in output.
+    For example N = 100
+    Reverse of N should be 1 not 001.
+    Constraints
+    1<=N<=10000  -->
+
+
+    <h1>Program to print the reverse of the given Number</h1>
+    <hr />
+    <p>Constraints</p>
+    <ul>
+        <li>Number should be between 1 and 10000</li>
+        <li>Do not print leading zeros in output</li>
+    </ul>
+    <form>
+        <input type="number" name="num" id="num" placeholder="Enter a number" required>
+        <button type="submit" id="btn">Reverse</button>
+    </form>
+    <p id="inputNum"></p>
+    <p id="result"></p>
+
+    <script>
+        let reverseBtn = document.querySelector("#btn")
+        let result = document.querySelector("#result")
+        let inputNum = document.querySelector("#inputNum")
+
+        reverseBtn.addEventListener("click", function (e) {
+            e.preventDefault();
+            let number = document.querySelector("#num")
+            console.log(Number(number.value));
+            if (Number(number.value) < 0 || Number(number.value) > 10001 || (number.value.startsWith("0"))) {
+                alert("Read the constraints")
+            } else {
+                let reversedNum = parseInt(number.value.split('').reverse().join(''), 10)
+                inputNum.textContent = `Input Number = ${number.value}`;
+                result.textContent = `Reversed Number = ${reversedNum}`;
+                number.value = ""
+            }
+
+        })
+    </script>
+</body>
+
+</html>

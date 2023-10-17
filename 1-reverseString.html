@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reverse String</title>
+</head>
+
+<body>
+    <!-- 1. Write a program to print the reverse of the given string.
+    Input
+    codecode
+    Output
+    edocedoc
+    Input Constraints
+    1<=Length of string<=100 Input string contains only lowercase characters ['a' to 'z' ]. -->
+    <h1>Program to print the reverse of the given String</h1>
+
+    <hr />
+    <p>Constraints</p>
+    <ul>
+        <li>length of the string should be between 1 and 100</li>
+        <li>Input string contains only lowercase characters ['a' to 'z'].</li>
+    </ul>
+    <form>
+        <input type="text" name="string" id="string" placeholder="Enter the String" required>
+        <button type="submit" id="btn">Reverse</button>
+    </form>
+    <h5>Method - 1</h5>
+    <p id="inputStr"></p>
+    <p id="result"></p>
+    <hr />
+    <h5>Method -2</h5>
+    <p id="display"></p>
+
+    <script>
+        let string = document.querySelector("#string")
+        let reverseBtn = document.querySelector("#btn")
+        let inputStr = document.querySelector("#inputStr")
+        let result = document.querySelector("#result")
+        let display = document.querySelector("#display")
+
+        reverseBtn.addEventListener("click", function (e) {
+            e.preventDefault();
+            let strValue = document.querySelector("#string")
+            let pattern = /^[a-z ]+$/
+            let testStr = pattern.test(strValue.value)
+
+            if (strValue.value.length < 1 || strValue.value.length > 101 || !testStr) {
+
+                alert("Read the constraints")
+                strValue.value = "";
+
+            } else {
+
+                //Method-1
+                let output = strValue.value.split("").reverse().join("")
+                inputStr.textContent = `Input String = ${strValue.value}`;
+                result.textContent = `Reversed String = ${output}`;
+
+                //Method-2
+                let array = strValue.value.split(" ");
+                let i = array.length - 1;
+                let outStr = ''
+                for (; i >= 0; i--) {
+                    let j = array[i].length - 1;
+                    for (; j >= 0; j--) {
+                        
+                        display.append(`${array[i][j]}`)
+                        // document.write(`${array[i][j]}`);
+                    }
+                    display.append(`\t`)
+                    // document.write(`\t`);
+                }
+                strValue.value = "";
+
+
+
+
+
+            }
+        })
+
+    </script>
+</body>
+
+</html>
